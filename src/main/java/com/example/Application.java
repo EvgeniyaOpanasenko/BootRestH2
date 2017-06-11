@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.model.Employee;
+import com.example.model.WorkData;
 import com.example.repository.EmployeeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,10 +23,11 @@ public class Application {
     @Bean
     public CommandLineRunner setup(EmployeeRepository employeeRepository) {
         return (args) -> {
-            employeeRepository.save(new Employee("Gustavo", "Ponce", true));
-            employeeRepository.save(new Employee("John", "Smith", true));
+            employeeRepository.save(new Employee("Gustavo", "Ponce", true,
+                    new WorkData("driver")));
+           /* employeeRepository.save(new Employee("John", "Smith", true));
             employeeRepository.save(new Employee("Jim ", "Morrison", false));
-            employeeRepository.save(new Employee("David", "Gilmour", true));
+            employeeRepository.save(new Employee("David", "Gilmour", true));*/
             logger.info("The sample data has been generated");
         };
     }

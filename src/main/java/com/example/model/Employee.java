@@ -1,8 +1,6 @@
 package com.example.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Employee {
@@ -13,13 +11,31 @@ public class Employee {
     private String lastName;
     private boolean active;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private WorkData data;
+
     public Employee() {
     }
 
-    public Employee(String name, String lastName, boolean active) {
+    public Employee(String name, String lastName, boolean active, WorkData data) {
         this.name = name;
         this.lastName = lastName;
         this.active = active;
+        this.data = data;
+    }
+
+   /* public Employee(String name, String lastName, boolean active) {
+        this.name = name;
+        this.lastName = lastName;
+        this.active = active;
+    }*/
+
+    public WorkData getData() {
+        return data;
+    }
+
+    public void setData(WorkData data) {
+        this.data = data;
     }
 
     public Long getId() {
